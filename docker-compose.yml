@@ -1,0 +1,31 @@
+services:
+  database:
+    image: postgres:16-alpine3.22
+    ports:
+      - 5432:5432
+    env_file: ./database/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./database/pg_hba.conf:/etc/postgresql/pg_hba.conf
+      - ./database/postgresql.conf:/etc/postgresql/postgresql.conf
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    # networks:
+    #   - be-db-network
+
+  app:
+    build:
+      context: ./app
+    entrypoint: "/bin/sh entrypoint.dev.sh"
+    volumes:
+      - ./app:/app
+    ports:
+      - 8000:8000
+    depends_on:
+      - database
+    env_file: ./app/.env
+
+volumes:
+  postgres_data:
+# networks:
+#   be-db-network:
+#     name: be-db-network
