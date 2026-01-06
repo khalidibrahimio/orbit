@@ -4,9 +4,10 @@ services:
     env_file: ./database/.env
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./database/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf
-      - ./database/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
-    command: postgres -c config_file=/var/lib/postgresql/data/postgresql.conf
+      - ./database/pg_hba.conf:/tmp/pg_hba.conf
+      - ./database/postgresql.conf:/tmp/postgresql.conf
+      - ./database/init-db.sh:/usr/local/bin/init-db.sh
+    entrypoint: ["/usr/local/bin/init-db.sh"]
     networks:
       - main-network
 
