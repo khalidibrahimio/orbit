@@ -15,12 +15,18 @@
             type="text/x-scss"
             href="{% static 'main/scss/base.scss' %}" />
     {% endcompress %}
-    {% block extra_css %}{% endblock %}
-    {% htmx_script %}
-    <!-- <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css" rel="stylesheet" type="text/css" /> -->
+    {% block extra_head %}{% endblock %}
+    {% compress js %}
+      {% htmx_script %}
+    {% endcompress %}
+    {% compress js %}
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css"
+            rel="stylesheet"
+            type="text/css" />
+    {% endcompress %}
   </head>
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
-    <div>
+    <div class="site-container">
       {% block content %}{% endblock %}
     </div>
   </body>
