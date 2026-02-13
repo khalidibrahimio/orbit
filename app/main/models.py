@@ -28,5 +28,10 @@ class Cycle(models.Model):
   orbit_id = models.ForeignKey(Orbit, on_delete=models.CASCADE, null=False)
   task_id = models.ForeignKey(Task, on_delete=models.CASCADE, null=False)
   status = models.TextField(choices=STATUS_CHOICES, default="in_progress", null=False)
+
+class Default(models.Model):
+  work_duration = models.TimeField(default="00:25:00", null=False)
+  rest_duration = models.TimeField(default="00:05:00", null=False)
+  orbit_cylces = models.IntegerField(default=2, null=False)
   
 
