@@ -1,6 +1,38 @@
 var timer_interval;
 var seconds_remaining;
 
+var min_input = document.getElementById("time_minutes");
+var sec_input = document.getElementById("time_seconds");
+
+window.onload = function () {
+  //break button
+  var startButton = document.getElementById("timer-start-button");
+  startButton.onclick = function () {
+    startCountdown();
+  };
+  //pause button
+  var pauseButton = document.getElementById("timer-pause-button");
+  pauseButton.onclick = function () {
+    pauseCountdown();
+  };
+
+  //resume button
+  var resumeButton = document.getElementById("timer-resume-button");
+  resumeButton.onclick = function () {
+    resumeCountdown();
+  };
+  document.getElementById("timer-input").appendChild(startButton);
+  document.getElementById("timer-pause-area").appendChild(pauseButton);
+  document.getElementById("timer-resume-area").appendChild(resumeButton);
+
+  //hide pause button by default
+  document.getElementById("timer-pause-area").style.display = "none";
+  //hide pause button by default
+  document.getElementById("timer-resume-area").style.display = "none";
+  //hide refresh by default
+  document.getElementById("timer-reset-button").style.display = "none";
+};
+
 function messageHide() {
   document.getElementById("timer-message").style.display = "none";
 }
@@ -36,37 +68,8 @@ function pauseCountdown() {
   return;
 }
 
-function tick() {
-  var timer_display = document.getElementById("time");
-
-  var min = Math.floor(seconds_remaining / 60);
-  var sec = seconds_remaining - min * 60;
-
-  if (min < 10) {
-    min = "0" + min;
-  }
-
-  if (sec < 10) {
-    sec = "0" + sec;
-  }
-
-  var message = min + ":" + sec;
-  timer_display.innerHTML = message;
-
-  if (seconds_remaining === 0) {
-    document.getElementById("timer-message").innerHTML =
-      "<strong>Times up!</strong>";
-    document
-      .getElementById("timer-message")
-      .setAttribute("class", "alert alert-success text-center");
-    clearInterval(timer_interval);
-    resetTimer();
-  }
-  seconds_remaining--;
-}
-
 function startCountdown() {
-  var minutes = document.getElementById("timer-minutes-input").value;
+  var minutes = min_input.value;
 
   //check if it is a number
   if (isNaN(minutes) || minutes == "") {
@@ -80,9 +83,23 @@ function startCountdown() {
     setTimeout(messageHide, 5000);
     resetTimer();
     return;
+  } else if (minutes <= 0 || minutes > 59) {
+    document.getElementById("timer-message").innerHTML =
+      "Yikes! It's not a valid number. <strong>TRY AGAIN</strong>";
+    document
+      .getElementById("timer-message")
+      .setAttribute("class", "alert alert-danger text-center");
+
+    //hides error after 5 secs
+    setTimeout(messageHide, 5000);
+    resetTimer();
+    return;
   }
   //get the seconds
   seconds_remaining = minutes * 60;
+
+  min_input.setAttribute("type", "text");
+  min_input.setAttribute("disabled", "true");
   //reoccuring function
   tick();
   timer_interval = setInterval(tick, 1000);
@@ -93,6 +110,40 @@ function startCountdown() {
   //show refresh when running
   document.getElementById("timer-reset-button").style.display = "block";
 }
+
+function tick() {
+  var min = parseInt(min_input.value);
+  var sec = parseInt(sec_input.value);
+
+  var min = Math.floor(seconds_remaining / 60);
+  var sec = seconds_remaining - min * 60;
+
+  if (min < 10) {
+    min = "0" + min;
+  }
+
+  if (sec < 10) {
+    sec = "0" + sec;
+  }
+  console.log("min_input.value = " + min_input.value);
+  min_input.value = min;
+  sec_input.value = sec;
+
+  if (seconds_remaining === 0) {
+    document.getElementById("timer-message").innerHTML =
+      "<strong>Times up!</strong>";
+    document
+      .getElementById("timer-message")
+      .setAttribute("class", "alert alert-success text-center");
+    min_input.setAttribute("type", "number");
+    min_input.removeAttribute("disabled");
+
+    clearInterval(timer_interval);
+    resetTimer();
+  }
+  seconds_remaining--;
+}
+
 //refresh page with button
 document.getElementById("timer-reset-button").onclick = function () {
   clearInterval(timer_interval);
@@ -102,32 +153,4 @@ document.getElementById("timer-reset-button").onclick = function () {
   document.getElementById("timer-reset-button").style.display = "none";
   document.getElementById("timer-resume-area").style.display = "none";
   document.getElementById("timer-pause-area").style.display = "none";
-};
-window.onload = function () {
-  //break button
-  var startButton = document.getElementById("timer-start-button");
-  startButton.onclick = function () {
-    startCountdown();
-  };
-  //pause button
-  var pauseButton = document.getElementById("timer-pause-button");
-  pauseButton.onclick = function () {
-    pauseCountdown();
-  };
-
-  //resume button
-  var resumeButton = document.getElementById("timer-resume-button");
-  resumeButton.onclick = function () {
-    resumeCountdown();
-  };
-  document.getElementById("timer-input").appendChild(startButton);
-  document.getElementById("timer-pause-area").appendChild(pauseButton);
-  document.getElementById("timer-resume-area").appendChild(resumeButton);
-
-  //hide pause button by default
-  document.getElementById("timer-pause-area").style.display = "none";
-  //hide pause button by default
-  document.getElementById("timer-resume-area").style.display = "none";
-  //hide refresh by default
-  document.getElementById("timer-reset-button").style.display = "none";
 };

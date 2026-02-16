@@ -26,7 +26,7 @@
           <div class="timer-clock">
             <input id="time_minutes"
                    name="minutes"
-                   type="text"
+                   type="number"
                    class="timer__time"
                    maxlength="2"
                    minlength="2"
@@ -38,12 +38,12 @@
             <input id="time_seconds"
                    name="seconds"
                    type="text"
+                   disabled
                    class="timer__time"
                    maxlength="2"
                    minlength="2"
                    min="00"
                    max="59"
-                   onfocus="this.select()"
                    value="00">
           </div>
           <div id="timer-input">

@@ -28,6 +28,24 @@
   }
 }
 
+// Remove the default spinner controls from number inputs across browsers
+/* For Chrome, Safari, Edge, and Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* For Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Standard property (for future compatibility) */
+input[type="number"] {
+  appearance: textfield;
+}
+
 .timer {
   text-align: center;
   margin-top: 50px;
@@ -44,6 +62,11 @@
     font-size: 5rem;
     justify-content: center;
     align-items: center;
+
+    span {
+      color: #ffffff;
+      margin: 0 10px;
+    }
   }
 
   &__time {
