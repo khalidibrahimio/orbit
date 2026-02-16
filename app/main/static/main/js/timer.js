@@ -30,7 +30,7 @@ window.onload = function () {
   //hide pause button by default
   document.getElementById("timer-resume-area").style.display = "none";
   //hide refresh by default
-  document.getElementById("timer-reset-button").style.display = "none";
+  document.getElementById("timer-stop-button").style.display = "none";
 };
 
 function messageHide() {
@@ -45,9 +45,8 @@ function resetTimer() {
   //hide resume button
   document.getElementById("timer-resume-area").style.display = "none";
   //hide refresh button
-  document.getElementById("timer-reset-button").style.display = "none";
+  document.getElementById("timer-stop-button").style.display = "none";
   //reset value to blank
-  document.getElementById("timer-minutes-input").value = "";
   setTimeout(messageHide, 5000);
 }
 
@@ -64,15 +63,27 @@ function resumeCountdown() {
 function pauseCountdown() {
   clearInterval(timer_interval);
   document.getElementById("timer-pause-area").style.display = "none";
-  document.getElementById("timer-resume-area").style.display = "block";
+  document.getElementById("timer-resume-area").style.display = "flex";
   return;
 }
 
 function startCountdown() {
-  var minutes = min_input.value;
+  console.log("startCountdown called", min_input.value);
+  var minutes = parseInt(min_input.value);
 
   //check if it is a number
   if (isNaN(minutes) || minutes == "") {
+    document.getElementById("timer-message").innerHTML =
+      "Yikes! It's not a number. <strong>TRY AGAIN</strong";
+    document
+      .getElementById("timer-message")
+      .setAttribute("class", "alert alert-danger text-center");
+
+    //hides error after 5 secs
+    setTimeout(messageHide, 5000);
+    resetTimer();
+    return;
+  } else if (minutes <= 0) {
     document.getElementById("timer-message").innerHTML =
       "Yikes! It's not a number. <strong>TRY AGAIN</strong>";
     document
@@ -83,9 +94,10 @@ function startCountdown() {
     setTimeout(messageHide, 5000);
     resetTimer();
     return;
-  } else if (minutes <= 0 || minutes > 59) {
+  } else if (minutes > 59) {
+    console.log("minutes = " + minutes);
     document.getElementById("timer-message").innerHTML =
-      "Yikes! It's not a valid number. <strong>TRY AGAIN</strong>";
+      "This defeats the purpose ☹️ 45 minutes or less is recommended. TRY AGAIN";
     document
       .getElementById("timer-message")
       .setAttribute("class", "alert alert-danger text-center");
@@ -98,7 +110,6 @@ function startCountdown() {
   //get the seconds
   seconds_remaining = minutes * 60;
 
-  min_input.setAttribute("type", "text");
   min_input.setAttribute("disabled", "true");
   //reoccuring function
   tick();
@@ -108,7 +119,7 @@ function startCountdown() {
   //show pause when running
   document.getElementById("timer-pause-area").style.display = "block";
   //show refresh when running
-  document.getElementById("timer-reset-button").style.display = "block";
+  document.getElementById("timer-stop-button").style.display = "block";
 }
 
 function tick() {
@@ -135,7 +146,6 @@ function tick() {
     document
       .getElementById("timer-message")
       .setAttribute("class", "alert alert-success text-center");
-    min_input.setAttribute("type", "number");
     min_input.removeAttribute("disabled");
 
     clearInterval(timer_interval);
@@ -145,12 +155,13 @@ function tick() {
 }
 
 //refresh page with button
-document.getElementById("timer-reset-button").onclick = function () {
+document.getElementById("timer-stop-button").onclick = function () {
   clearInterval(timer_interval);
-  document.getElementById("time").innerHTML = "00:00";
-  document.getElementById("timer-minutes-input").value = "";
-  document.getElementById("timer-input").style.display = "block";
-  document.getElementById("timer-reset-button").style.display = "none";
+  resetTimer();
+  min_input.value = "00";
+  sec_input.value = "00";
+  min_input.removeAttribute("disabled");
+  document.getElementById("timer-stop-button").style.display = "none";
   document.getElementById("timer-resume-area").style.display = "none";
   document.getElementById("timer-pause-area").style.display = "none";
 };

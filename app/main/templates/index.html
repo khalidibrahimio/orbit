@@ -21,18 +21,17 @@
       <h2 class="timer__title">Timer</h2>
       <div id="timer-display" class="timer__display">
         <div class="row">
-          <div id="timer-message" class="timer__message" role="error"></div>
-          <button type="button" class="timer__reset-button" id="timer-reset-button">Reset</button>
           <div class="timer-clock">
             <input id="time_minutes"
                    name="minutes"
-                   type="number"
+                   type="text"
                    class="timer__time"
                    maxlength="2"
                    minlength="2"
                    min="00"
                    max="59"
                    onfocus="this.select()"
+                   onclick="this.select()"
                    value="00">
             <span>:</span>
             <input id="time_seconds"
@@ -46,20 +45,17 @@
                    max="59"
                    value="00">
           </div>
-          <div id="timer-input">
-            <input type="text"
-                   id="timer-minutes-input"
-                   class="timer__time-input"
-                   placeholder="ENTER MINUTES">
-            <br>
+          <div id="timer-input" class="timer-button-area">
             <button type="button" id="timer-start-button" class="timer__start-button">START</button>
           </div>
-          <div id="timer-pause-area">
+          <div id="timer-pause-area" class="timer-button-area">
             <button type="button" id="timer-pause-button" class="timer__pause-button">PAUSE</button>
           </div>
-          <div id="timer-resume-area">
-            <button type="button" id="timer-resume-button" class="timer__resume-button">PLAY</button>
+          <div id="timer-resume-area" class="timer-button-area">
+            <button type="button" id="timer-resume-button" class="timer__resume-button">RESUME</button>
+            <button type="button" class="timer__stop-button" id="timer-stop-button">STOP</button>
           </div>
+          <div id="timer-message" role="error"></div>
         </div>
       </div>
     </div>
