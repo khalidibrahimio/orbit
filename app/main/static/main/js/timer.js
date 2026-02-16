@@ -68,7 +68,6 @@ function pauseCountdown() {
 }
 
 function startCountdown() {
-  console.log("startCountdown called", min_input.value);
   var minutes = parseInt(min_input.value);
 
   //check if it is a number
@@ -95,7 +94,6 @@ function startCountdown() {
     resetTimer();
     return;
   } else if (minutes > 59) {
-    console.log("minutes = " + minutes);
     document.getElementById("timer-message").innerHTML =
       "This defeats the purpose ☹️ 45 minutes or less is recommended. TRY AGAIN";
     document
@@ -136,7 +134,6 @@ function tick() {
   if (sec < 10) {
     sec = "0" + sec;
   }
-  console.log("min_input.value = " + min_input.value);
   min_input.value = min;
   sec_input.value = sec;
 
