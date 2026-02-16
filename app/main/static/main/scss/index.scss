@@ -64,13 +64,30 @@ input[type="number"] {
     color: hsl(0, 0%, 100%);
   }
 
+  &__display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+  }
+
   &-clock {
+    position: relative;
+    top: calc(10vh + 50px);
     display: flex;
     flex-direction: row;
     gap: 0;
     font-size: 5rem;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 
     span {
       color: hsl(0, 0%, 100%);
@@ -116,6 +133,31 @@ input[type="number"] {
     gap: 10px;
     margin-top: 20px;
   }
+
+  &-circle {
+    width: 400px;
+    height: 400px;
+    position: relative;
+    top: calc(10vh - 200px);
+    left: calc(50% - 200px); /* Center the circle horizontally */
+  }
+}
+
+svg {
+  transform: rotate(-90deg); /* Start at 12 o'clock */
+}
+circle {
+  fill: none;
+  stroke-width: 10;
+  stroke-linecap: round;
+}
+.base {
+  stroke: hsl(0, 0%, 100%);
+}
+.progress {
+  stroke: hsl(160, 86%, 22%);
+  stroke-dasharray: 942.77; /* Circumference: 2 * pi * 150 */
+  stroke-dashoffset: 0; /* Start full */
 }
 
 #timer-stop-button {

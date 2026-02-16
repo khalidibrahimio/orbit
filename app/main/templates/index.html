@@ -20,7 +20,7 @@
     <div class="timer">
       <h2 class="timer__title">Timer</h2>
       <div id="timer-display" class="timer__display">
-        <div class="row">
+        <div class="timer__container">
           <div class="timer-clock">
             <input id="time_minutes"
                    name="minutes"
@@ -45,18 +45,25 @@
                    max="59"
                    value="00">
           </div>
-          <div id="timer-input" class="timer-button-area">
-            <button type="button" id="timer-start-button" class="timer__start-button">START</button>
+          <div id="timer-circle" class="timer-circle">
+            <svg width="360" height="360">
+              <!-- <circle id="circle" cx="50" cy="50" r="45" stroke="blue" stroke-width="10" fill="none" pathLength="100" /> -->
+              <circle class="base" cx="180" cy="180" r="150" />
+              <circle class="progress" cx="180" cy="180" r="150" />
+            </svg>
           </div>
-          <div id="timer-pause-area" class="timer-button-area">
-            <button type="button" id="timer-pause-button" class="timer__pause-button">PAUSE</button>
-          </div>
-          <div id="timer-resume-area" class="timer-button-area">
-            <button type="button" id="timer-resume-button" class="timer__resume-button">RESUME</button>
-            <button type="button" class="timer__stop-button" id="timer-stop-button">STOP</button>
-          </div>
-          <div id="timer-message" role="error"></div>
         </div>
+        <div id="timer-input" class="timer-button-area">
+          <button type="button" id="timer-start-button" class="timer__start-button">START</button>
+        </div>
+        <div id="timer-pause-area" class="timer-button-area">
+          <button type="button" id="timer-pause-button" class="timer__pause-button">PAUSE</button>
+        </div>
+        <div id="timer-resume-area" class="timer-button-area">
+          <button type="button" id="timer-resume-button" class="timer__resume-button">RESUME</button>
+          <button type="button" class="timer__stop-button" id="timer-stop-button">STOP</button>
+        </div>
+        <div id="timer-message" role="error"></div>
       </div>
     </div>
   </div>
