@@ -1,5 +1,7 @@
 {% load static %}
+{% load compress %}
 {% load django_htmx %}
+{% load static tailwind_cli %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,19 +11,14 @@
     <meta name="description" content="App" />
     <meta name="keywords" content="app, web, application" />
     <title>App</title>
-    {% load compress %}
-    <!-- {% compress css %}
-      <link rel="stylesheet" type="text/x-scss" href="{% static 'main/scss/base.scss' %}" />
-    {% endcompress %} -->
+    {% tailwind_css %}
     {% block extra_head %}{% endblock %}
     {% compress js %}
       {% htmx_script %}
     {% endcompress %}
-    {% compress js %}
-      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css"
-            rel="stylesheet"
-            type="text/css" />
-    {% endcompress %}
+    <!-- {% compress js %}
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css" rel="stylesheet" type="text/css" />
+    {% endcompress %} -->
   </head>
   <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
     <div class="site-container">

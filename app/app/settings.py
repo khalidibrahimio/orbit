@@ -52,7 +52,6 @@ INSTALLED_APPS = [
   "django_htmx",
   "compressor",
   "django_tailwind_cli",
-  "django_browser_reload",
   "main",
 ]
 
@@ -84,9 +83,7 @@ TEMPLATES = [
   },
 ]
 
-STATICFILES_DIRS = [
-  os.path.join(BASE_DIR, "main/static"),
-]
+STATICFILES_DIRS = [BASE_DIR / "assets"]
 
 STATICFILES_FINDERS = (
   'django.contrib.staticfiles.finders.FileSystemFinder',
