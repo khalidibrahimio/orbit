@@ -25,12 +25,12 @@ window.onload = function () {
   document.getElementById("timer-pause-area").appendChild(pauseButton);
   document.getElementById("timer-resume-area").appendChild(resumeButton);
 
-  //hide pause button by default
-  document.getElementById("timer-pause-area").style.display = "none";
-  //hide pause button by default
-  document.getElementById("timer-resume-area").style.display = "none";
-  //hide refresh by default
-  document.getElementById("timer-stop-button").style.display = "none";
+  // //hide pause button by default
+  // document.getElementById("timer-pause-area").style.display = "none";
+  // //hide pause button by default
+  // document.getElementById("timer-resume-area").style.display = "none";
+  // //hide refresh by default
+  // document.getElementById("timer-stop-button").style.display = "none";
 };
 
 function messageHide() {

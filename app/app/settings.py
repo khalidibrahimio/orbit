@@ -40,10 +40,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-COMPRESS_PRECOMPILERS = (
-  ('text/x-scss', 'django_libsass.SassCompiler'),
-)
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,6 +51,8 @@ INSTALLED_APPS = [
   "django.contrib.staticfiles",
   "django_htmx",
   "compressor",
+  "django_tailwind_cli",
+  "django_browser_reload",
   "main",
 ]
 
@@ -84,6 +82,10 @@ TEMPLATES = [
       ],
     },
   },
+]
+
+STATICFILES_DIRS = [
+  os.path.join(BASE_DIR, "main/static"),
 ]
 
 STATICFILES_FINDERS = (

@@ -2,11 +2,9 @@
 {% load static %}
 {% load compress %}
 {% block extra_head %}
-  {% compress css %}
-    <link rel="stylesheet"
-          type="text/x-scss"
-          href="{% static 'main/scss/index.scss' %}" />
-  {% endcompress %}
+  <!-- {% compress css %}
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'main/scss/index.scss' %}" />
+  {% endcompress %} -->
 {% endblock %}
 {% block content %}
   {% compress js %}
@@ -54,12 +52,14 @@
           </div>
         </div>
         <div id="timer-input" class="timer-button-area">
-          <button type="button" id="timer-start-button" class="timer__start-button">START</button>
+          <button type="button"
+                  id="timer-start-button"
+                  class="timer__start-button color-red">START</button>
         </div>
-        <div id="timer-pause-area" class="timer-button-area">
+        <div id="timer-pause-area" class=" hidden">
           <button type="button" id="timer-pause-button" class="timer__pause-button">PAUSE</button>
         </div>
-        <div id="timer-resume-area" class="timer-button-area">
+        <div id="timer-resume-area" class=" hidden">
           <button type="button" id="timer-resume-button" class="timer__resume-button">RESUME</button>
           <button type="button" class="timer__stop-button" id="timer-stop-button">STOP</button>
         </div>

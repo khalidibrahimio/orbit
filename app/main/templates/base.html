@@ -10,11 +10,9 @@
     <meta name="keywords" content="app, web, application" />
     <title>App</title>
     {% load compress %}
-    {% compress css %}
-      <link rel="stylesheet"
-            type="text/x-scss"
-            href="{% static 'main/scss/base.scss' %}" />
-    {% endcompress %}
+    <!-- {% compress css %}
+      <link rel="stylesheet" type="text/x-scss" href="{% static 'main/scss/base.scss' %}" />
+    {% endcompress %} -->
     {% block extra_head %}{% endblock %}
     {% compress js %}
       {% htmx_script %}

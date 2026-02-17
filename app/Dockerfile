@@ -1,7 +1,7 @@
 # Stage 1: Base build stage
 FROM python:3.12-slim AS builder
 
-# Install system dependencies needed for building libsass and other potential packages
+# Install system dependencies needed for building packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
     gcc \
     g++ \
