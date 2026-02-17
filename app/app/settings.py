@@ -83,6 +83,8 @@ TEMPLATES = [
   },
 ]
 
+TAILWIND_CLI_SRC_CSS = os.path.join(BASE_DIR, "main/static/css/input.css")
+
 STATICFILES_DIRS = [BASE_DIR / "assets"]
 
 STATICFILES_FINDERS = (

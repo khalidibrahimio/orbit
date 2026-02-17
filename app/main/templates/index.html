@@ -12,7 +12,9 @@
   {% endcompress %}
   <header class="flex flex-row justify-between items-center px-5 py-2.5 bg-emerald-950">
     <h1 class="text-white text-2xl font-semibold">Orbit!</h1>
-    <button class="bg-emerald-900 text-white border border-white px-4 py-2 rounded-full text-base cursor-pointer transition-colors duration-300 hover:bg-emerald-800">Log In</button>
+    <button class="bg-emerald-900 text-white border border-white px-4 py-2 rounded-full text-base cursor-pointer transition-colors duration-300 hover:bg-emerald-800">
+      Log In
+    </button>
   </header>
   <main class="flex flex-col items-center">
     <div class="text-center mt-12">
@@ -23,7 +25,7 @@
             <input id="time_minutes"
                    name="minutes"
                    type="text"
-                   class="text-5xl text-center text-white border-none bg-transparent outline-none font-inherit p-0 m-0 w-[100px] h-auto shadow-none cursor-text tabular-nums"
+                   class="text-5xl text-center text-white border-none bg-transparent outline-none font-inherit p-0 m-0 w-[60px] h-auto shadow-none cursor-text tabular-nums"
                    maxlength="2"
                    minlength="2"
                    min="00"
@@ -36,14 +38,15 @@
                    name="seconds"
                    type="text"
                    disabled
-                   class="text-5xl text-center text-white border-none bg-transparent outline-none font-inherit p-0 m-0 w-[100px] h-auto shadow-none cursor-text tabular-nums"
+                   class="text-5xl text-center text-white border-none bg-transparent outline-none font-inherit p-0 m-0 w-[60px] h-auto shadow-none cursor-text tabular-nums"
                    maxlength="2"
                    minlength="2"
                    min="00"
                    max="59"
                    value="00">
           </div>
-          <div id="timer-circle" class="absolute w-[400px] h-[400px] top-[calc(10vh-200px)] left-[calc(50%-200px)]">
+          <div id="timer-circle"
+               class="relative w-[360px] h-[360px] top-[calc(50%-260px)] left-[calc(50%-180px)]">
             <svg width="360" height="360" class="rotate-[-90deg]">
               <circle class="fill-none stroke-white stroke-[10] stroke-linecap-round" cx="180" cy="180" r="150" />
               <circle class="fill-none stroke-emerald-900 stroke-[10] stroke-linecap-round" cx="180" cy="180" r="150" stroke-dasharray="942.77" stroke-dashoffset="0" />
@@ -51,14 +54,30 @@
           </div>
         </div>
         <div id="timer-input" class="flex justify-center gap-2.5 mt-5">
-          <button type="button" id="timer-start-button" class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">START</button>
+          <button type="button"
+                  id="timer-start-button"
+                  class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">
+            START
+          </button>
         </div>
         <div id="timer-pause-area" class="hidden">
-          <button type="button" id="timer-pause-button" class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">PAUSE</button>
+          <button type="button"
+                  id="timer-pause-button"
+                  class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">
+            PAUSE
+          </button>
         </div>
         <div id="timer-resume-area" class="hidden">
-          <button type="button" id="timer-resume-button" class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">RESUME</button>
-          <button type="button" id="timer-stop-button" class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-red-900 text-white transition-colors duration-300 hover:bg-red-800">STOP</button>
+          <button type="button"
+                  id="timer-resume-button"
+                  class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">
+            RESUME
+          </button>
+          <button type="button"
+                  id="timer-stop-button"
+                  class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-red-900 text-white transition-colors duration-300 hover:bg-red-800">
+            STOP
+          </button>
         </div>
         <div id="timer-message" role="error" class="mt-2.5 h-5 text-red-700"></div>
       </div>
