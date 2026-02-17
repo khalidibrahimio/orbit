@@ -10,20 +10,20 @@
   {% compress js %}
     <script type="text/javascript" defer src="{% static 'main/js/timer.js' %}"></script>
   {% endcompress %}
-  <div class="site-header">
-    <h1 class="site-header__title">Orbit!</h1>
-    <button class="site-header__login-button">Log In</button>
-  </div>
-  <div class="site-content">
-    <div class="timer">
-      <h2 class="timer__title">Timer</h2>
-      <div id="timer-display" class="timer__display">
-        <div class="timer__container">
-          <div class="timer-clock">
+  <header class="flex flex-row justify-between items-center px-5 py-2.5 bg-emerald-950">
+    <h1 class="text-white text-2xl font-semibold">Orbit!</h1>
+    <button class="bg-emerald-900 text-white border border-white px-4 py-2 rounded-full text-base cursor-pointer transition-colors duration-300 hover:bg-emerald-800">Log In</button>
+  </header>
+  <main class="flex flex-col items-center">
+    <div class="text-center mt-12">
+      <h2 class="text-3xl text-white font-semibold mb-2">Timer</h2>
+      <div id="timer-display" class="flex flex-col items-center gap-5">
+        <div class="relative w-[400px] h-[400px] mx-auto">
+          <div class="relative top-[calc(10vh+50px)] flex flex-row gap-0 text-5xl justify-center items-center z-10">
             <input id="time_minutes"
                    name="minutes"
                    type="text"
-                   class="timer__time"
+                   class="text-5xl text-center text-white border-none bg-transparent outline-none font-inherit p-0 m-0 w-[100px] h-auto shadow-none cursor-text tabular-nums"
                    maxlength="2"
                    minlength="2"
                    min="00"
@@ -31,38 +31,37 @@
                    onfocus="this.select()"
                    onclick="this.select()"
                    value="00">
-            <span>:</span>
+            <span class="text-white mx-2.5">:</span>
             <input id="time_seconds"
                    name="seconds"
                    type="text"
                    disabled
-                   class="timer__time"
+                   class="text-5xl text-center text-white border-none bg-transparent outline-none font-inherit p-0 m-0 w-[100px] h-auto shadow-none cursor-text tabular-nums"
                    maxlength="2"
                    minlength="2"
                    min="00"
                    max="59"
                    value="00">
           </div>
-          <div id="timer-circle" class="timer-circle">
-            <svg width="360" height="360">
-              <!-- <circle id="circle" cx="50" cy="50" r="45" stroke="blue" stroke-width="10" fill="none" pathLength="100" /> -->
-              <circle class="base" cx="180" cy="180" r="150" />
-              <circle class="progress" cx="180" cy="180" r="150" />
+          <div id="timer-circle" class="absolute w-[400px] h-[400px] top-[calc(10vh-200px)] left-[calc(50%-200px)]">
+            <svg width="360" height="360" class="rotate-[-90deg]">
+              <circle class="fill-none stroke-white stroke-[10] stroke-linecap-round" cx="180" cy="180" r="150" />
+              <circle class="fill-none stroke-emerald-900 stroke-[10] stroke-linecap-round" cx="180" cy="180" r="150" stroke-dasharray="942.77" stroke-dashoffset="0" />
             </svg>
           </div>
         </div>
-        <div id="timer-input" class="timer-button-area">
-          <button type="button" id="timer-start-button" class="timer__start-button">START</button>
+        <div id="timer-input" class="flex justify-center gap-2.5 mt-5">
+          <button type="button" id="timer-start-button" class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">START</button>
         </div>
         <div id="timer-pause-area" class="hidden">
-          <button type="button" id="timer-pause-button" class="timer__pause-button">PAUSE</button>
+          <button type="button" id="timer-pause-button" class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">PAUSE</button>
         </div>
         <div id="timer-resume-area" class="hidden">
-          <button type="button" id="timer-resume-button" class="timer__resume-button">RESUME</button>
-          <button type="button" class="timer__stop-button" id="timer-stop-button">STOP</button>
+          <button type="button" id="timer-resume-button" class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">RESUME</button>
+          <button type="button" id="timer-stop-button" class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-red-900 text-white transition-colors duration-300 hover:bg-red-800">STOP</button>
         </div>
-        <div id="timer-message" role="error"></div>
+        <div id="timer-message" role="error" class="mt-2.5 h-5 text-red-700"></div>
       </div>
     </div>
-  </div>
+  </main>
 {% endblock %}

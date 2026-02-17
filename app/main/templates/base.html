@@ -3,7 +3,7 @@
 {% load django_htmx %}
 {% load static tailwind_cli %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -16,12 +16,9 @@
     {% compress js %}
       {% htmx_script %}
     {% endcompress %}
-    <!-- {% compress js %}
-      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css" rel="stylesheet" type="text/css" />
-    {% endcompress %} -->
   </head>
-  <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}'>
-    <div class="site-container">
+  <body hx-headers='{"x-csrftoken": "{{ csrf_token }}"}' class="bg-black text-white font-sans antialiased">
+    <div class="min-h-screen">
       {% block content %}{% endblock %}
     </div>
     <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>

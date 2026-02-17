@@ -76,7 +76,7 @@ function startCountdown() {
       "Yikes! It's not a number. <strong>TRY AGAIN</strong";
     document
       .getElementById("timer-message")
-      .setAttribute("class", "alert alert-danger text-center");
+      .setAttribute("class", "mt-2.5 h-5 text-red-700 text-center");
 
     //hides error after 5 secs
     setTimeout(messageHide, 5000);
@@ -87,7 +87,7 @@ function startCountdown() {
       "Yikes! It's not a number. <strong>TRY AGAIN</strong>";
     document
       .getElementById("timer-message")
-      .setAttribute("class", "alert alert-danger text-center");
+      .setAttribute("class", "mt-2.5 h-5 text-red-700 text-center");
 
     //hides error after 5 secs
     setTimeout(messageHide, 5000);
@@ -95,10 +95,10 @@ function startCountdown() {
     return;
   } else if (minutes > 59) {
     document.getElementById("timer-message").innerHTML =
-      "This defeats the purpose ☹️ 45 minutes or less is recommended. TRY AGAIN";
+      "This defeats the purpose ☕ 45 minutes or less is recommended. TRY AGAIN";
     document
       .getElementById("timer-message")
-      .setAttribute("class", "alert alert-danger text-center");
+      .setAttribute("class", "mt-2.5 h-5 text-red-700 text-center");
 
     //hides error after 5 secs
     setTimeout(messageHide, 5000);
@@ -142,7 +142,7 @@ function tick() {
       "<strong>Times up!</strong>";
     document
       .getElementById("timer-message")
-      .setAttribute("class", "alert alert-success text-center");
+      .setAttribute("class", "mt-2.5 h-5 text-green-600 text-center");
     min_input.removeAttribute("disabled");
 
     clearInterval(timer_interval);
