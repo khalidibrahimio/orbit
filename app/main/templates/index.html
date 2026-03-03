@@ -1,14 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load compress %}
-{% block extra_head %}
-  <!-- {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'main/scss/index.scss' %}" />
-  {% endcompress %} -->
-{% endblock %}
+{% block extra_head %}{% endblock %}
 {% block content %}
   {% compress js %}
-    <script type="text/javascript" defer src="{% static 'main/js/timer.js' %}"></script>
+    <script type="text/javascript" defer src="{% static 'js/timer.js' %}"></script>
   {% endcompress %}
   <header class="flex flex-row justify-between items-center px-5 py-2.5 bg-emerald-950">
     <h1 class="text-white text-2xl font-semibold">Orbit!</h1>
@@ -60,14 +56,15 @@
             START
           </button>
         </div>
-        <div id="timer-pause-area" class="hidden">
+        <div id="timer-pause-area" class="hidden flex justify-center gap-2.5 mt-5">
           <button type="button"
                   id="timer-pause-button"
                   class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">
             PAUSE
           </button>
         </div>
-        <div id="timer-resume-area" class="hidden">
+        <div id="timer-resume-area"
+             class="hidden flex justify-center gap-2.5 mt-5">
           <button type="button"
                   id="timer-resume-button"
                   class="m-2.5 p-2.5 text-base border-none rounded cursor-pointer bg-emerald-900 text-white transition-colors duration-300 hover:bg-emerald-800">
